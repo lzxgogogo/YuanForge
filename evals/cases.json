@@ -1,0 +1,68 @@
+[
+  {
+    "id": "greenfield-bootstrap-zh",
+    "operation": "bootstrap",
+    "profile": "general",
+    "prompt": "$yuanforge bootstrap 当前中文项目仓库，建立最小可用基线。",
+    "fixture": "只有项目介绍和零散会议结论；没有软件代码、既有规格或 Worktree 指南。",
+    "expected": [
+      "先检查 Git 和仓库证据，再创建文档",
+      "自然语言使用中文",
+      "无证据事实标记为待确认",
+      "建立持久上下文循环",
+      "只按当前需要创建 Worktree"
+    ]
+  },
+  {
+    "id": "brownfield-map-without-duplicates",
+    "operation": "bootstrap",
+    "profile": "software",
+    "prompt": "$yuanforge bootstrap 这个中途项目，优先复用已有事实源。",
+    "fixture": "已有不同名称的产品、架构和契约文档，代码与部分文档存在轻微漂移。",
+    "expected": [
+      "把已有文档映射到信息职责",
+      "不建立第二套事实源",
+      "用代码、测试和契约指出漂移",
+      "只补真正缺失的职责"
+    ]
+  },
+  {
+    "id": "dirty-audit-read-only",
+    "operation": "audit",
+    "profile": "research",
+    "prompt": "$yuanforge audit 当前研究项目基线，只审计，不改文件。",
+    "fixture": "包含研究方案、数据字典、Notebook 和用户未提交修改，只有 main Worktree，缺少软件式默认文件名。",
+    "expected": [
+      "保留并披露脏状态",
+      "按研究画像映射六类职责，不套用前后端文件名",
+      "不创建、修改、Stash 或删除任何内容",
+      "使用 READY、PARTIAL 或 BLOCKED 报告"
+    ]
+  },
+  {
+    "id": "repair-docs-only-repository",
+    "operation": "repair",
+    "profile": "general",
+    "prompt": "$yuanforge repair 已确认的基线漂移；这是文档型项目。",
+    "fixture": "Worktree 指南与实际拓扑不一致，交互和结构职责由同一份现有文档承担，安装命令已经失效。",
+    "expected": [
+      "修复规范归属和可验证命令",
+      "不创建空的软件专属规格",
+      "让 Worktree 指南匹配真实拓扑",
+      "运行新鲜验证"
+    ]
+  },
+  {
+    "id": "evolve-project-preference",
+    "operation": "evolve",
+    "profile": "software",
+    "prompt": "$yuanforge 根据重复用户纠正演化项目基线，不改全局 Skill。",
+    "fixture": "项目多次出现同一种语言和交付偏好，progress 中也记录了相同纠正。",
+    "expected": [
+      "区分当前状态、Lesson 和稳定偏好",
+      "把偏好写入唯一规范位置",
+      "提供有证据且可审查的 Diff",
+      "不从单个项目静默改写全局 Skill"
+    ]
+  }
+]

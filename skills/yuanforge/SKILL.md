@@ -1,36 +1,36 @@
 ---
 name: yuanforge
-description: "Create, audit, repair, or evolve a repository-specific development baseline: six core specification roles, the persistent AGENTS.md/progress.txt/lessons.md context loop, a worktree guide, and role-based Git worktrees. Use when starting a project, onboarding an existing codebase, recovering missing context, correcting documentation drift, restructuring worktrees, or promoting evidence-backed project preferences and lessons into durable agent guidance. Do not use as the default workflow for routine feature implementation, bug fixing, or refactoring after the baseline is established."
+description: "Create, audit, repair, or evolve a repository-backed project baseline for software, research, documentation, operations, or other sustained work: six cross-domain information roles, the persistent AGENTS.md/progress.txt/lessons.md context loop, a worktree guide, and role-based Git worktrees. Use when starting a project, onboarding existing work, recovering missing context, correcting documentation drift, restructuring worktrees, or promoting evidence-backed preferences and lessons into durable agent guidance. Do not use as the default workflow for routine implementation, analysis, writing, or review after the baseline is established."
 ---
 
 # YuanForge
 
-Turn a repository into a self-governing development environment. Build the baseline, verify it against repository evidence, then let the generated repository documents govern daily work.
+Turn a repository into a self-governing project environment. Build the baseline, verify it against project evidence, then let the generated repository documents govern daily work.
 
 ## Keep the boundary
 
 Use this skill for four operations:
 
 - **Bootstrap:** create a missing baseline for a new or existing repository.
-- **Audit:** compare an existing baseline with code, tests, contracts, migrations, Git state, and actual worktrees.
+- **Audit:** compare an existing baseline with applicable artifacts, evidence, tests, data, sources, Git state, and actual worktrees.
 - **Repair:** update canonical documents or worktree structure when the baseline has drifted.
 - **Evolve:** promote evidence-backed project preferences and lessons into the correct canonical documents.
 
-Do not use this skill to accompany every feature, bug fix, refactor, or review. After bootstrap, agents should follow `AGENTS.md`, `progress.txt`, `lessons.md`, the stable specifications, and `docs/WORKTREE_GUIDE.md` directly.
+Do not use this skill to accompany every implementation, analysis, writing, or review task. After bootstrap, agents should follow `AGENTS.md`, `progress.txt`, `lessons.md`, the stable specifications, and `docs/WORKTREE_GUIDE.md` directly.
 
 ## Build the baseline
 
-Read [references/bootstrap.md](references/bootstrap.md) completely before creating or changing baseline artifacts.
+Read [references/roles.md](references/roles.md) and [references/bootstrap.md](references/bootstrap.md) completely before creating or changing baseline artifacts.
 
 Produce or map these information roles:
 
 ```text
-docs/PRD.md
-docs/APP_FLOW.md
-docs/TECH_STACK.md
-docs/FRONTEND_GUIDELINES.md
-docs/BACKEND_STRUCTURE.md
-docs/IMPLEMENTATION_PLAN.md
+intent
+workflow
+methods
+interaction
+structure
+delivery
 
 AGENTS.md
 progress.txt
@@ -38,12 +38,14 @@ lessons.md
 docs/WORKTREE_GUIDE.md
 
 main
-experiment
-writing
-agent-debug
+experiment (planned or materialized)
+writing (planned or materialized)
+agent-debug (planned or materialized)
 ```
 
-Treat the filenames as defaults and the information roles as requirements. Reuse a canonical equivalent when one already exists; do not create duplicate sources of truth.
+Treat the six roles as cross-domain requirements and all filenames as profile-specific defaults. Select a software, research, general-project, or evidence-backed custom profile. Reuse a canonical equivalent when one already exists; do not create duplicate sources of truth.
+
+Treat worktree names as role defaults, not a quota. Define the applicable roles and materialize only the worktrees required by the current operation or explicitly requested by the user. Do not create idle worktrees merely to complete the default topology.
 
 Preserve project individuality. Infer existing conventions from repository evidence before applying defaults. When asked to learn preferences or evolve the baseline, read [references/evolution.md](references/evolution.md) completely.
 
@@ -68,7 +70,7 @@ Record an explicit, durable language preference in the appropriate concise proje
 1. Run `git worktree list`, `git branch --show-current`, and `git status --short`.
 2. Read applicable repository instructions and existing context files.
 3. Determine the output language from explicit instructions and maintained repository evidence.
-4. Search code, tests, contracts, schemas, migrations, configuration, documentation, and relevant history.
+4. Search the applicable artifacts: code, tests, contracts, schemas, migrations, datasets, notebooks, sources, protocols, configuration, documentation, outputs, and relevant history.
 5. Map current evidence to every baseline role.
 6. Identify conflicts, dirty changes, path collisions, unsupported claims, and unintended language drift.
 
@@ -90,7 +92,7 @@ Use [references/bootstrap.md](references/bootstrap.md) to:
 - maintain `progress.txt` as a current snapshot;
 - record only reusable prevention rules in `lessons.md`;
 - make `docs/WORKTREE_GUIDE.md` match the actual topology;
-- create or reuse worktrees without overwriting paths, moving dirty changes, or deleting branches.
+- plan role-based worktrees and create or reuse only those needed now, without overwriting paths, moving dirty changes, or deleting branches.
 
 Present conflicts or destructive choices before acting. Perform reversible, unambiguous creation that the user explicitly requested.
 
@@ -104,7 +106,7 @@ Verify:
 - document claims trace to current repository evidence;
 - relative links, commands, versions, and defaults are valid;
 - `AGENTS.md`, `progress.txt`, and `lessons.md` form a usable reading and update loop;
-- `git worktree list` matches `docs/WORKTREE_GUIDE.md`;
+- `git worktree list` matches the materialized topology in `docs/WORKTREE_GUIDE.md`, while planned-only roles are marked as such;
 - all dirty states, unresolved conflicts, and external unknowns are disclosed.
 - newly created prose follows the selected repository language without translating precision-sensitive identifiers.
 
@@ -128,7 +130,7 @@ Classify new information before storing it:
 
 - current task state belongs in `progress.txt`;
 - reusable failure prevention belongs in `lessons.md`;
-- stable product, technology, frontend, backend, or planning preferences belong in the matching specification;
+- stable intent, workflow, method, interaction, structure, or delivery preferences belong in the matching specification;
 - concise agent execution rules may be promoted to `AGENTS.md`;
 - worktree behavior belongs in `docs/WORKTREE_GUIDE.md`.
 

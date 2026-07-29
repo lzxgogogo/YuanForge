@@ -1,4 +1,4 @@
 interface:
   display_name: "YuanForge"
-  short_description: "Build and evolve a project-specific baseline"
-  default_prompt: "Use $yuanforge to bootstrap, audit, or evolve this repository's development baseline."
+  short_description: "为软件、研究和通用项目建立、审计并持续演化可信项目基线"
+  default_prompt: "使用 $yuanforge 审计当前项目仓库，并基于证据建立或修复最小项目基线。"

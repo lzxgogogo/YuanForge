@@ -36,12 +36,12 @@
 |---|---|
 | 当前任务状态、阻塞、下一步 | `progress.txt` |
 | 可复用的症状、根因、预防 | `lessons.md` |
-| 范围和验收偏好 | `docs/PRD.md` |
-| 流程与状态行为 | `docs/APP_FLOW.md` |
-| 技术选择或依赖边界 | `docs/TECH_STACK.md` |
-| 前端约定 | `docs/FRONTEND_GUIDELINES.md` |
-| 后端边界或数据归属 | `docs/BACKEND_STRUCTURE.md` |
-| 交付顺序或验证关卡 | `docs/IMPLEMENTATION_PLAN.md` |
+| 目标、范围和成功条件 | 意图职责的规范文档 |
+| 流程、状态和恢复行为 | 流程职责的规范文档 |
+| 方法、工具、环境和数据来源 | 方法职责的规范文档 |
+| 用户、参与者、系统或受众接口 | 交互职责的规范文档 |
+| 模块、证据、数据或责任边界 | 结构职责的规范文档 |
+| 交付顺序、复现或验证关卡 | 交付职责的规范文档 |
 | Agent 阅读或执行规则 | `AGENTS.md` 中的精炼条目 |
 | 分支和 Worktree 行为 | `docs/WORKTREE_GUIDE.md` |
 

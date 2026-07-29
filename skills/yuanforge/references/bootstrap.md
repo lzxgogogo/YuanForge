@@ -6,7 +6,7 @@
 
 - [检查当前项目](#检查当前项目)
 - [选择文档语言](#选择文档语言)
-- [建立六份稳定规格](#建立六份稳定规格)
+- [建立六类稳定职责](#建立六类稳定职责)
 - [建立持久上下文循环](#建立持久上下文循环)
 - [建立 Worktree 指南](#建立-worktree-指南)
 - [建立 Worktree 拓扑](#建立-worktree-拓扑)
@@ -18,7 +18,7 @@
 
 1. 运行 `git worktree list`、`git branch --show-current` 和 `git status --short`。
 2. 阅读适用的 `AGENTS.md`、`CLAUDE.md`、README、已有进度文件和仓库指令。
-3. 搜索已跟踪文件和隐藏文件中的需求、流程、架构、技术栈、计划、契约、测试、迁移和 Worktree 指南。
+3. 搜索已跟踪文件和隐藏文件中的目标、流程、方法、结构、计划、代码、契约、测试、数据、来源、研究材料、输出和 Worktree 指南。
 4. 把现有产物映射到下方的信息职责。
 5. 找出冲突、脏改动、路径碰撞、已被签出的分支和仍未验证的事实。
 
@@ -42,20 +42,20 @@
 
 用户明确表达了长期语言偏好时，把规则精炼地写入已有项目指导；不要为此新建独立语言配置文件。
 
-## 建立六份稳定规格
+## 建立六类稳定职责
 
-除非仓库惯例提供更合适的规范位置，否则使用以下默认路径：
+按照 `references/roles.md` 选择项目画像。固定以下职责，但文件名和内容必须跟随项目证据：
 
-| 文档 | 稳定职责 | 最小内容 |
+| 职责 | 最小内容 | 通用默认路径 |
 |---|---|---|
-| `docs/PRD.md` | 产品范围和验收 | 目标、用户、范围、非目标、场景、验收条件、开放问题 |
-| `docs/APP_FLOW.md` | 用户与系统流程 | 角色、入口、主流程、状态转换、失败路径、恢复 |
-| `docs/TECH_STACK.md` | 技术约束 | 运行时、框架、存储、集成、固定选择、命令、不支持的选择 |
-| `docs/FRONTEND_GUIDELINES.md` | 客户端约定 | 结构、状态、API 访问、错误、加载、可访问性、测试 |
-| `docs/BACKEND_STRUCTURE.md` | 服务端边界 | 模块、分层、数据归属、契约、错误、后台任务、测试 |
-| `docs/IMPLEMENTATION_PLAN.md` | 建设顺序 | 阶段、依赖、工作项、验证关卡、发布、延期事项 |
+| 意图 | 目标、范围、非目标、成功条件、开放问题 | `docs/PROJECT_BRIEF.md` |
+| 流程 | 角色、入口、步骤、状态、失败和恢复 | `docs/WORKFLOW.md` |
+| 方法 | 方法、工具、环境、数据、约束和可复现命令 | `docs/METHODS.md` |
+| 交互 | 用户、参与者、系统或受众的外部接口和体验 | `docs/INTERACTION_GUIDE.md` |
+| 结构 | 内部对象、模块、证据、数据、责任和边界 | `docs/PROJECT_STRUCTURE.md` |
+| 交付 | 阶段、依赖、产物、验证关卡、发布或评审 | `docs/DELIVERY_PLAN.md` |
 
-没有前端或后端的项目，只有在用户明确要求六文件约定时才保留对应文件。根据仓库证据写“不适用”，不得虚构子系统。
+软件项目可以继续使用 `PRD.md`、`APP_FLOW.md`、`TECH_STACK.md`、Frontend、Backend 和 `IMPLEMENTATION_PLAN.md` 等惯用名，但不能把这些名称强加给研究或通用项目。职责不适用时说明原因，不得虚构内容或创建空文件。
 
 从当前证据填充文档：
 
@@ -71,7 +71,7 @@
 
 ## 建立持久上下文循环
 
-六份规格之外，始终单独创建或修复：
+六类职责之外，始终单独创建或修复：
 
 | 文件 | 用途 |
 |---|---|
@@ -117,7 +117,7 @@
 
 ## 建立 Worktree 拓扑
 
-优先遵循仓库已有 Worktree 指令，否则使用以下角色：
+优先遵循仓库已有 Worktree 指令，否则使用以下角色。角色是路由约定，不是必须同时存在的 Worktree 配额：
 
 | 角色 | 目的 | 默认分支 | 默认同级目录 |
 |---|---|---|---|
@@ -134,6 +134,8 @@
 4. 分支已存在且未在其他位置签出时，为它添加 Worktree。
 5. 分支不存在时，从已验证的稳定基线创建。
 6. 遇到路径碰撞、基线歧义或分支已在其他 Worktree 签出时停止。
+
+只创建当前操作需要或用户明确要求的 Worktree。没有对应任务时，在指南中把角色标记为“按需”，不得为了凑齐默认拓扑创建空闲 Worktree。
 
 解析准确名称后，典型命令如下：
 
@@ -155,12 +157,12 @@ git worktree add ../<repo>-writing codex/writing
 
 验证并报告：
 
-1. `git worktree list` 显示预期角色、分支和路径。
+1. `git worktree list` 显示当前实体 Worktree；指南中的未创建角色明确标记为“按需”。
 2. 每个新 Worktree 具有预期基线，且状态干净或已披露。
-3. 六个信息职责各有唯一规范归属。
+3. 六个跨领域信息职责各有唯一规范归属或有证据的不适用说明。
 4. `AGENTS.md`、`progress.txt`、`lessons.md` 存在或有明确等价物，并正确链接。
 5. 已检查根 `AGENTS.md` 的精炼程度，超过参考值有运行或安全理由。
-6. `docs/WORKTREE_GUIDE.md` 与真实拓扑一致。
+6. `docs/WORKTREE_GUIDE.md` 与真实拓扑一致，且公共仓库不提交个人绝对路径。
 7. 相对链接可解析。
 8. 命令、版本和默认值与仓库一致。
 9. 新写自然语言符合所选项目语言，精度敏感标识符未被误译。
@@ -170,12 +172,12 @@ git worktree add ../<repo>-writing codex/writing
 
 ```text
 职责                     规范产物                              状态
-产品范围                 docs/PRD.md                          已创建
-应用流程                 docs/APP_FLOW.md                     已更新
-技术约束                 docs/TECH_STACK.md                   已复用
-前端约定                 docs/FRONTEND_GUIDELINES.md          待确认
-后端结构                 docs/BACKEND_STRUCTURE.md            已创建
-实施顺序                 docs/IMPLEMENTATION_PLAN.md          已创建
+意图                     docs/PROJECT_BRIEF.md                已创建
+流程                     docs/WORKFLOW.md                     已更新
+方法                     docs/METHODS.md                      已复用
+交互                     docs/INTERACTION_GUIDE.md            待确认
+结构                     docs/PROJECT_STRUCTURE.md            已创建
+交付                     docs/DELIVERY_PLAN.md                已创建
 Agent 入口               AGENTS.md                            已更新
 当前进度                 progress.txt                         已创建
 可复用 Lessons           lessons.md                          已创建

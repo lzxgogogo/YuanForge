@@ -1,7 +1,7 @@
 # YuanForge
 
 <p align="center">
-  <img src="assets/yuanforge-hero.svg" alt="YuanForge 为代码仓库建立 Yuan Layer" width="900">
+  <img src="assets/yuanforge-hero.svg" alt="YuanForge 为项目建立 Yuan Layer" width="900">
 </p>
 
 <p align="center">
@@ -9,13 +9,13 @@
   锻造项目元数据，让 Agent 有据可循。
 </p>
 
-让 Agent 第一次走进仓库，就能回答三件事：
+让 Agent 第一次走进项目仓库，就能回答三件事：
 
 **这个项目要做什么？哪些约束不能碰？下一步从哪里继续？**
 
-YuanForge 是一个项目基线 Skill。它从代码、测试、契约、Git 和已有文档中找回事实，把散落的上下文锻造成一层可维护的项目元数据：**Yuan Layer**。
+YuanForge 是一个项目基线 Skill。它从代码、文档、测试、数据、来源、产物和 Git 中找回事实，把散落的上下文锻造成一层可维护的项目元数据：**Yuan Layer**。
 
-它不替你开发，也不要求每个任务都走一遍流程。基线建好以后，仓库自己的文档会接管日常协作，YuanForge 就可以退场了。
+它不替你开发、研究或管理项目，也不要求每个任务都走一遍流程。基线建好以后，仓库自己的文档会接管日常协作，YuanForge 就可以退场了。
 
 ## 为什么叫 Yuan
 
@@ -27,9 +27,9 @@ YuanForge 是一个项目基线 Skill。它从代码、测试、契约、Git 和
 
 ```mermaid
 flowchart LR
-    R["仓库事实<br/>代码 · 测试 · Git"] --> Y["YuanForge"]
+    R["项目事实<br/>代码 · 文档 · 数据 · Git"] --> Y["YuanForge"]
     Y --> L["Yuan Layer<br/>规格 · 约束 · 记忆"]
-    L --> A["Coding Agent<br/>少猜 · 可交接 · 可验证"]
+    L --> A["Agent<br/>少猜 · 可交接 · 可验证"]
     A -. "验证与纠正" .-> R
 ```
 
@@ -46,29 +46,31 @@ YuanForge 只做四件事：
 
 | 层次 | 规范归属 |
 |---|---|
-| 意图 | `PRD.md`、`APP_FLOW.md` |
-| 结构 | `TECH_STACK.md`、前端与后端结构文档 |
-| 交付 | `IMPLEMENTATION_PLAN.md` |
+| 意图与流程 | `PROJECT_BRIEF.md`、`WORKFLOW.md`，或已有 PRD、研究方案 |
+| 方法与结构 | `METHODS.md`、`PROJECT_STRUCTURE.md`，或已有技术、证据结构文档 |
+| 交互与交付 | `INTERACTION_GUIDE.md`、`DELIVERY_PLAN.md`，或项目已有等价物 |
 | 控制 | 精炼的 `AGENTS.md`、`WORKTREE_GUIDE.md` |
 | 记忆 | 当前快照 `progress.txt`、经验规则 `lessons.md` |
 
-文件名是默认约定，不是死模板。已有文档已经稳定承担某项职责时，YuanForge 会复用它，不会再造一套“真相”。
+固定的是意图、流程、方法、交互、结构、交付六类职责，不是文件名。软件、研究和通用项目会选择不同表达；已有文档稳定承担职责时，YuanForge 会复用它。
 
-默认还会规划四类 Worktree：稳定集成、实验、文档和临时排查。真实名称与路径以项目现状为准。
+默认会规划四类 Worktree：稳定集成、实验、文档和临时排查。角色预先定义，实体按需创建；真实名称、路径和数量以项目现状为准。
 
 ## 安装
 
 ```bash
 git clone https://github.com/lzxgogogo/YuanForge.git
-mkdir -p ~/.codex/skills
-cp -R YuanForge/skills/yuanforge ~/.codex/skills/yuanforge
+mkdir -p ~/.codex/skills/yuanforge
+cp -R YuanForge/skills/yuanforge/. ~/.codex/skills/yuanforge/
 ```
 
 PowerShell：
 
 ```powershell
 git clone https://github.com/lzxgogogo/YuanForge.git
-Copy-Item -Recurse -Force .\YuanForge\skills\yuanforge "$env:USERPROFILE\.codex\skills\yuanforge"
+$target = "$env:USERPROFILE\.codex\skills\yuanforge"
+New-Item -ItemType Directory -Force $target | Out-Null
+Get-ChildItem -Force .\YuanForge\skills\yuanforge | Copy-Item -Destination $target -Recurse -Force
 ```
 
 安装后新建一个 Codex 任务，让 Codex 重新发现 Skill。
@@ -118,12 +120,12 @@ YuanForge 不假设项目是白纸。
 - 文档语言跟随用户和项目，代码标识符与协议字段保持原样。
 - 项目偏好留在项目里，不让一个仓库静默改写全局 Skill。
 - 没有新鲜验证，就不声称基线已经完成。
-- 基线稳定后，普通开发任务不再需要调用 YuanForge。
+- 基线稳定后，普通开发、研究和项目任务不再需要调用 YuanForge。
 
 更完整的职责模型见 [Yuan Layer](docs/YUAN_LAYER.md)。Skill 的执行细节在 [skills/yuanforge](skills/yuanforge)。
 
 ## 状态
 
-YuanForge 仍是早期自用版本。结构已经通过 Codex Skill 校验，也在真实项目讨论中持续自举；接下来需要更多不同类型仓库的 Bootstrap、Audit 和 Evolve 测试。
+YuanForge 仍是早期自用版本。结构已经通过 Codex Skill 校验，并用自身仓库完成首轮 Bootstrap；下一阶段是用 `evals/cases.json` 在软件、研究和通用项目中做独立前向验证。
 
 MIT License

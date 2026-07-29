@@ -72,9 +72,10 @@ Record an explicit, durable language preference in the appropriate concise proje
 1. Run `git worktree list`, `git branch --show-current`, and `git status --short`.
 2. Read applicable repository instructions and existing context files.
 3. Determine the output language from explicit instructions and maintained repository evidence.
-4. Search the applicable artifacts: code, tests, contracts, schemas, migrations, datasets, notebooks, sources, protocols, configuration, documentation, outputs, and relevant history.
+4. Search the applicable artifacts: code, tests, contracts, schemas, migrations, datasets, notebooks, sources, protocols, configuration, documentation, outputs, relevant history, and user-provided prototypes, slides, screenshots, or design references.
 5. Map current evidence to every baseline role.
-6. Identify conflicts, dirty changes, path collisions, unsupported claims, and unintended language drift.
+6. Separate observed current behavior, accepted target behavior, proposed changes, and unresolved preferences.
+7. Identify conflicts, dirty changes, path collisions, unsupported claims, and unintended language drift.
 
 Do not stop because expected filenames are absent. Recover facts from the repository, then create the requested canonical structure.
 
@@ -83,6 +84,8 @@ Do not stop because expected filenames are absent. Recover facts from the reposi
 Read [references/readiness.md](references/readiness.md) when an unknown affects product scope, architecture, public behavior, safety, authorization, data, the stable baseline, or the worktree topology.
 
 Inspect before asking. Ask one informed question at a time only when the answer is required to avoid encoding a consequential guess into the baseline.
+
+Do not treat implementation evidence as proof of desired behavior. When the operation defines or repairs how a project should work, resolve consequential gaps in user intent before writing the target baseline. Continue questioning one decision at a time until no unresolved answer could materially change behavior or acceptance; do not use a subjective confidence percentage as the release gate.
 
 ### 3. Create or repair
 
@@ -111,6 +114,8 @@ Verify:
 - `git worktree list` matches the materialized topology in `docs/WORKTREE_GUIDE.md`, while planned-only roles are marked as such;
 - all dirty states, unresolved conflicts, and external unknowns are disclosed.
 - newly created prose follows the selected repository language without translating precision-sensitive identifiers.
+- current implementation is not presented as target intent without supporting product, research, editorial, or user evidence;
+- user-facing software has a canonical journey covering actors, entry points, screens or surfaces, actions, decisions, states, success, errors, recovery, routes, and permissions, or explicitly records why a category is not applicable.
 
 ### 5. Hand off
 

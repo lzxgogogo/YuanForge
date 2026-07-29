@@ -47,6 +47,16 @@ class RepositoryContractTests(unittest.TestCase):
             self.assertTrue(case["fixture"])
             self.assertGreaterEqual(len(case["expected"]), 3)
 
+    def test_ui_flow_regression_case_guards_intent(self):
+        cases = json.loads((ROOT / "evals/cases.json").read_text(encoding="utf-8"))
+        case = next(
+            item for item in cases if item["id"] == "brownfield-ui-current-is-not-target"
+        )
+        expected = "\n".join(case["expected"])
+        self.assertIn("当前实现、目标意图和候选方案", expected)
+        self.assertIn("角色、入口、页面、动作、状态", expected)
+        self.assertIn("不把后端业务流水线或 API 清单", expected)
+
     def test_install_command_copies_contents_not_container(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("skills/yuanforge/.", readme)

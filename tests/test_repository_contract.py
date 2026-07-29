@@ -40,7 +40,7 @@ class RepositoryContractTests(unittest.TestCase):
         operations = {case["operation"] for case in cases}
         self.assertEqual({"bootstrap", "audit", "repair", "evolve"}, operations)
         profiles = {case["profile"] for case in cases}
-        self.assertEqual({"software", "research", "general"}, profiles)
+        self.assertEqual({"software", "research", "documentation"}, profiles)
         self.assertEqual(len(cases), len({case["id"] for case in cases}))
         for case in cases:
             self.assertTrue(case["prompt"])

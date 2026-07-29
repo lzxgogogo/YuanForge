@@ -1,6 +1,6 @@
 ---
 name: yuanforge
-description: "Create, audit, repair, or evolve a repository-backed project baseline for software, research, documentation, operations, or other sustained work: six cross-domain information roles, the persistent AGENTS.md/progress.txt/lessons.md context loop, a worktree guide, and role-based Git worktrees. Use when starting a project, onboarding existing work, recovering missing context, correcting documentation drift, restructuring worktrees, or promoting evidence-backed preferences and lessons into durable agent guidance. Do not use as the default workflow for routine implementation, analysis, writing, or review after the baseline is established."
+description: "Create, audit, repair, or evolve a repository-backed project baseline for sustained Agent collaboration across software, research, data, documentation, and mixed projects whose durable artifacts and working context live in Git. Build six cross-domain information roles, the AGENTS.md/progress.txt/lessons.md context loop, a worktree guide, and role-based Git worktrees. Use when starting or onboarding a repository, recovering missing context, correcting documentation drift, restructuring worktrees, or promoting evidence-backed preferences into durable guidance. Do not use for one-off tasks, projects whose source of truth lives mainly outside the repository, or routine work after the baseline is established."
 ---
 
 # YuanForge
@@ -15,6 +15,8 @@ Use this skill for four operations:
 - **Audit:** compare an existing baseline with applicable artifacts, evidence, tests, data, sources, Git state, and actual worktrees.
 - **Repair:** update canonical documents or worktree structure when the baseline has drifted.
 - **Evolve:** promote evidence-backed project preferences and lessons into the correct canonical documents.
+
+Use it only when the repository is the durable operating surface: important artifacts, decisions, constraints, and verification evidence can be stored or referenced there. Do not pretend to govern projects whose real state lives mainly in external systems, private conversations, or physical execution.
 
 Do not use this skill to accompany every implementation, analysis, writing, or review task. After bootstrap, agents should follow `AGENTS.md`, `progress.txt`, `lessons.md`, the stable specifications, and `docs/WORKTREE_GUIDE.md` directly.
 
@@ -43,7 +45,7 @@ writing (planned or materialized)
 agent-debug (planned or materialized)
 ```
 
-Treat the six roles as cross-domain requirements and all filenames as profile-specific defaults. Select a software, research, general-project, or evidence-backed custom profile. Reuse a canonical equivalent when one already exists; do not create duplicate sources of truth.
+Treat the six roles as cross-domain requirements and all filenames as profile-specific defaults. Select or compose software, research, data, documentation, or evidence-backed custom profiles. Reuse a canonical equivalent when one already exists; do not create duplicate sources of truth.
 
 Treat worktree names as role defaults, not a quota. Define the applicable roles and materialize only the worktrees required by the current operation or explicitly requested by the user. Do not create idle worktrees merely to complete the default topology.
 

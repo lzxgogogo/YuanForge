@@ -2,9 +2,9 @@
   {
     "id": "greenfield-bootstrap-zh",
     "operation": "bootstrap",
-    "profile": "general",
-    "prompt": "$yuanforge bootstrap 当前中文项目仓库，建立最小可用基线。",
-    "fixture": "只有项目介绍和零散会议结论；没有软件代码、既有规格或 Worktree 指南。",
+    "profile": "documentation",
+    "prompt": "$yuanforge bootstrap 当前中文文档仓库，建立最小可用基线。",
+    "fixture": "主要文档、来源和审校记录位于 Git；没有软件代码、既有规格或 Worktree 指南。",
     "expected": [
       "先检查 Git 和仓库证据，再创建文档",
       "自然语言使用中文",
@@ -42,8 +42,8 @@
   {
     "id": "repair-docs-only-repository",
     "operation": "repair",
-    "profile": "general",
-    "prompt": "$yuanforge repair 已确认的基线漂移；这是文档型项目。",
+    "profile": "documentation",
+    "prompt": "$yuanforge repair 已确认的基线漂移；这是由 Git 承载的文档项目。",
     "fixture": "Worktree 指南与实际拓扑不一致，交互和结构职责由同一份现有文档承担，安装命令已经失效。",
     "expected": [
       "修复规范归属和可验证命令",

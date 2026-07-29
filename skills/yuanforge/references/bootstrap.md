@@ -44,7 +44,7 @@
 
 ## 建立六类稳定职责
 
-按照 `references/roles.md` 选择项目画像。固定以下职责，但文件名和内容必须跟随项目证据：
+按照 `references/roles.md` 选择或组合项目画像。固定以下职责，但文件名和内容必须跟随项目证据：
 
 | 职责 | 最小内容 | 通用默认路径 |
 |---|---|---|
@@ -55,7 +55,7 @@
 | 结构 | 内部对象、模块、证据、数据、责任和边界 | `docs/PROJECT_STRUCTURE.md` |
 | 交付 | 阶段、依赖、产物、验证关卡、发布或评审 | `docs/DELIVERY_PLAN.md` |
 
-软件项目可以继续使用 `PRD.md`、`APP_FLOW.md`、`TECH_STACK.md`、Frontend、Backend 和 `IMPLEMENTATION_PLAN.md` 等惯用名，但不能把这些名称强加给研究或通用项目。职责不适用时说明原因，不得虚构内容或创建空文件。
+软件项目可以继续使用 `PRD.md`、`APP_FLOW.md`、`TECH_STACK.md`、Frontend、Backend 和 `IMPLEMENTATION_PLAN.md` 等惯用名，但不能把这些名称强加给研究、数据或文档项目。职责不适用时说明原因，不得虚构内容或创建空文件。
 
 从当前证据填充文档：
 

@@ -1,30 +1,30 @@
 ---
 name: yuanforge
-description: "Create, audit, repair, or evolve a repository-backed project baseline for sustained Agent collaboration across software, research, data, documentation, and mixed projects whose durable artifacts and working context live in Git. Build six cross-domain information roles, the AGENTS.md/progress.txt/lessons.md context loop, a worktree guide, and role-based Git worktrees. Use when starting or onboarding a repository, recovering missing context, correcting documentation drift, restructuring worktrees, or promoting evidence-backed preferences into durable guidance. Do not use for one-off tasks, projects whose source of truth lives mainly outside the repository, or routine work after the baseline is established."
+description: "Establish, audit, repair, or evolve a trustworthy repository baseline for sustained Agent collaboration. Use when a Git-backed project needs six information responsibilities, a concise AGENTS.md/progress.txt/lessons.md context loop, verified Worktree guidance, or user-confirmed target intent before canonical documents are written. Do not use it for routine project work, domain execution, product design, or projects whose durable source of truth lives mainly outside the repository."
 ---
 
 # YuanForge
 
-Turn a repository into a self-governing project environment. Build the baseline, verify it against project evidence, then let the generated repository documents govern daily work.
+Turn a Git repository into a maintainable operating baseline for people and Agents.
 
-## Keep the boundary
+## Keep the promise finite
 
-Use this skill for four operations:
+Use YuanForge for four operations:
 
-- **Bootstrap:** create a missing baseline for a new or existing repository.
-- **Audit:** compare an existing baseline with applicable artifacts, evidence, tests, data, sources, Git state, and actual worktrees.
-- **Repair:** update canonical documents or worktree structure when the baseline has drifted.
-- **Evolve:** promote evidence-backed project preferences and lessons into the correct canonical documents.
+- **Bootstrap:** create or map a missing repository baseline.
+- **Audit:** compare the baseline with repository evidence and confirmed intent.
+- **Repair:** fix confirmed baseline drift or missing ownership.
+- **Evolve:** promote reviewed project evidence into durable guidance.
 
-Use it only when the repository is the durable operating surface: important artifacts, decisions, constraints, and verification evidence can be stored or referenced there. Do not pretend to govern projects whose real state lives mainly in external systems, private conversations, or physical execution.
+YuanForge governs the baseline. It does not perform domain work, implement features, design a product for the user, or infer desired behavior from code. When evidence requires capabilities YuanForge does not have, recommend a suitable Skill combination and continue in an accurately reduced mode.
 
-Do not use this skill to accompany every implementation, analysis, writing, or review task. After bootstrap, agents should follow `AGENTS.md`, `progress.txt`, `lessons.md`, the stable specifications, and `docs/WORKTREE_GUIDE.md` directly.
+Use YuanForge only when important artifacts, decisions, constraints, and verification evidence can be stored in or referenced from the repository. After bootstrap, let the repository's own guidance govern routine work.
 
 ## Build the baseline
 
 Read [references/roles.md](references/roles.md) and [references/bootstrap.md](references/bootstrap.md) completely before creating or changing baseline artifacts.
 
-Produce or map these information roles:
+Produce or map these information responsibilities:
 
 ```text
 intent
@@ -38,111 +38,90 @@ AGENTS.md
 progress.txt
 lessons.md
 docs/WORKTREE_GUIDE.md
-
-main
-experiment (planned or materialized)
-writing (planned or materialized)
-agent-debug (planned or materialized)
 ```
 
-Treat the six roles as cross-domain requirements and all filenames as profile-specific defaults. Select or compose software, research, data, documentation, or evidence-backed custom profiles. Reuse a canonical equivalent when one already exists; do not create duplicate sources of truth.
+Treat responsibilities as requirements, not filenames or empty templates. Reuse one canonical home for each lasting fact. Plan Worktree roles, but materialize only those needed by the current operation.
 
-Treat worktree names as role defaults, not a quota. Define the applicable roles and materialize only the worktrees required by the current operation or explicitly requested by the user. Do not create idle worktrees merely to complete the default topology.
+## Choose the project path
 
-Preserve project individuality. Infer existing conventions from repository evidence before applying defaults. When asked to learn preferences or evolve the baseline, read [references/evolution.md](references/evolution.md) completely.
+Read [references/intent-discovery.md](references/intent-discovery.md) whenever target intent is missing, incomplete, disputed, or still emerging.
 
-When generic inspection cannot reliably reconstruct a domain, read [references/domain-evidence.md](references/domain-evidence.md) and use an applicable optional evidence profile. For user-facing software whose product journey is missing, disputed, or being audited, also read [references/ui-evidence.md](references/ui-evidence.md). These profiles collect evidence; YuanForge retains readiness and canonical-document ownership.
+- **New project:** treat links, slides, prototypes, notes, and conversation as inputs for discovering target intent. They do not prove current project behavior. Help the user surface intent, then record only confirmed decisions.
+- **Existing project:** use code, tests, runtime results, data, artifacts, and Git history to establish current facts. Compare them with confirmed target documents and user decisions; do not infer the target from the implementation.
+- **Mixed project:** classify each claim separately. Do not let abundant current evidence outweigh missing target authority.
 
-## Match the repository language
-
-Choose the language of created or substantially rewritten project documents before writing them. Use this priority:
-
-1. the user's explicit language instruction for the current operation;
-2. an explicit repository language rule;
-3. the dominant language of maintained canonical documents such as `AGENTS.md`, the README, and current specifications;
-4. the language used by the user in the current conversation;
-5. English only when no stronger signal exists.
-
-Keep filenames, commands, code identifiers, protocol fields, and established technical terms unchanged when translation would reduce precision. Do not translate existing canonical documents merely for consistency unless the user requests it. When a repository intentionally uses different languages for different audiences, preserve that division.
-
-Record an explicit, durable language preference in the appropriate concise project guidance; do not create a standalone language settings file. If evidence conflicts and the choice would cause a broad rewrite, ask one informed question before changing documents.
+The user does not need to know the complete intent in advance. Help it emerge through focused questions, alternatives, examples, or low-cost prototypes. The user retains authority over consequential choices and acceptance.
 
 ## Run the operation
 
 ### 1. Inspect
 
 1. Run `git worktree list`, `git branch --show-current`, and `git status --short`.
-2. Read applicable repository instructions and existing context files.
-3. Determine the output language from explicit instructions and maintained repository evidence.
-4. Search the applicable artifacts: code, tests, contracts, schemas, migrations, datasets, notebooks, sources, protocols, configuration, documentation, outputs, relevant history, and user-provided prototypes, slides, screenshots, or design references.
-5. Map current evidence to every baseline role.
-6. Separate observed current behavior, accepted target behavior, proposed changes, and unresolved preferences.
-7. Identify conflicts, dirty changes, path collisions, unsupported claims, and unintended language drift.
+2. Read repository instructions, `docs/WORKTREE_GUIDE.md`, `lessons.md`, `progress.txt`, and applicable stable specifications.
+3. Search relevant code, tests, contracts, data, sources, artifacts, history, and user-provided materials.
+4. Map evidence to the six responsibilities.
+5. Separate current facts, confirmed target intent, proposed options, and unresolved questions.
+6. Identify conflicts, dirty changes, path collisions, unsupported claims, and language drift.
 
-Use optional evidence profiles only for applicable gaps. YuanForge must still provide a basic baseline when a specialized tool, runtime, or profile is unavailable; disclose the reduced evidence mode and resulting limits.
-
-Do not stop because expected filenames are absent. Recover facts from the repository, then create the requested canonical structure.
+Do not stop because expected filenames are absent. Recover facts from evidence and reuse existing canonical documents.
 
 ### 2. Resolve consequential unknowns
 
-Read [references/readiness.md](references/readiness.md) when an unknown affects product scope, architecture, public behavior, safety, authorization, data, the stable baseline, or the worktree topology.
+Read [references/readiness.md](references/readiness.md) when an answer could change scope, behavior, architecture, safety, authorization, data handling, acceptance, or Worktree topology.
 
-Inspect before asking. Ask one informed question at a time only when the answer is required to avoid encoding a consequential guess into the baseline.
+Inspect before asking. Ask one high-value question at a time. Start from the user's situation, goal, and completion signal rather than asking them to pre-design documents or screens.
 
-Do not treat implementation evidence as proof of desired behavior. When the operation defines or repairs how a project should work, resolve consequential gaps in user intent before writing the target baseline. Continue questioning one decision at a time until no unresolved answer could materially change behavior or acceptance; do not use a subjective confidence percentage as the release gate.
+Do not write a proposed answer as confirmed target intent. When the user requests an early draft, label unresolved content `To confirm` and return `PARTIAL` or `BLOCKED` as appropriate.
 
 ### 3. Create or repair
 
 Use [references/bootstrap.md](references/bootstrap.md) to:
 
-- populate stable documents from current evidence;
-- mark unsupported claims as `To confirm`;
-- keep `AGENTS.md` concise and link outward;
-- maintain `progress.txt` as a current snapshot;
+- populate stable documents from current evidence and confirmed decisions;
+- keep `AGENTS.md` concise and route details outward;
+- maintain `progress.txt` as the current snapshot;
 - record only reusable prevention rules in `lessons.md`;
-- make `docs/WORKTREE_GUIDE.md` match the actual topology;
-- plan role-based worktrees and create or reuse only those needed now, without overwriting paths, moving dirty changes, or deleting branches.
+- keep `docs/WORKTREE_GUIDE.md` aligned with actual topology;
+- preserve dirty work and avoid duplicate sources of truth.
 
-Present conflicts or destructive choices before acting. Perform reversible, unambiguous creation that the user explicitly requested.
+Present destructive or consequential choices before acting. Do not create target documents that encode unresolved consequential guesses.
 
-### 4. Verify
+### 4. Handle capability gaps
 
-Read [references/evidence.md](references/evidence.md) before claiming the baseline is ready.
+Read [references/capability-combinations.md](references/capability-combinations.md) only when required evidence cannot be inspected with current repository access.
 
-Verify:
+- Recommend the smallest useful combination of existing Skills or tools.
+- Do not make optional capabilities a YuanForge dependency.
+- Do not claim installation or availability without verification.
+- If the capability remains unavailable, state the missing evidence and continue as `PARTIAL` when safe.
+- When another capability returns evidence, normalize it with [references/domain-evidence.md](references/domain-evidence.md); YuanForge keeps readiness and document-ownership authority.
 
-- every baseline role has one canonical home;
-- document claims trace to current repository evidence;
-- relative links, commands, versions, and defaults are valid;
-- `AGENTS.md`, `progress.txt`, and `lessons.md` form a usable reading and update loop;
-- `git worktree list` matches the materialized topology in `docs/WORKTREE_GUIDE.md`, while planned-only roles are marked as such;
-- all dirty states, unresolved conflicts, and external unknowns are disclosed.
-- newly created prose follows the selected repository language without translating precision-sensitive identifiers.
-- current implementation is not presented as target intent without supporting product, research, editorial, or user evidence;
-- user-facing software has a canonical journey covering actors, entry points, screens or surfaces, actions, decisions, states, success, errors, recovery, routes, and permissions, or explicitly records why a category is not applicable.
+### 5. Verify
 
-### 5. Hand off
+Read [references/evidence.md](references/evidence.md) before claiming readiness.
 
-Report:
+Verify that:
 
-1. artifacts created, reused, updated, or left unresolved;
-2. worktrees created or reused with exact paths and branches;
-3. verification performed;
-4. remaining `To confirm` items and blockers;
-5. the normal start sequence for subsequent coding tasks.
+- each lasting fact has one canonical home;
+- document claims trace to repository evidence or confirmed intent;
+- current facts, target intent, and proposals remain distinct;
+- unresolved consequential questions are visible;
+- relative links, commands, language, and defaults are valid;
+- `AGENTS.md`, `progress.txt`, `lessons.md`, and Worktree guidance form a usable loop;
+- actual Worktrees match documented materialized topology;
+- dirty state and external unknowns are disclosed.
 
-Use `READY`, `PARTIAL`, or `BLOCKED`. A plan to create the baseline is not evidence that the baseline exists.
+### 6. Hand off
+
+Report artifacts changed or reused, Worktree state, verification, unresolved questions, capability gaps, and the normal start sequence for later tasks. Use `READY`, `PARTIAL`, or `BLOCKED`. A plan or plausible draft is not completion evidence.
 
 ## Evolve without drifting
 
-Do not mutate this global skill from one project's preferences. Evolve the repository baseline instead.
+Read [references/evolution.md](references/evolution.md) when promoting a correction or preference.
 
-Classify new information before storing it:
+- Put current state in `progress.txt`.
+- Put reusable failure prevention in `lessons.md`.
+- Put stable intent, workflow, method, interaction, structure, or delivery decisions in the matching canonical specification.
+- Put concise execution routing in `AGENTS.md` and Worktree behavior in `docs/WORKTREE_GUIDE.md`.
 
-- current task state belongs in `progress.txt`;
-- reusable failure prevention belongs in `lessons.md`;
-- stable intent, workflow, method, interaction, structure, or delivery preferences belong in the matching specification;
-- concise agent execution rules may be promoted to `AGENTS.md`;
-- worktree behavior belongs in `docs/WORKTREE_GUIDE.md`.
-
-Require evidence and an explicit, reviewable change before promoting a preference that alters future agent behavior. See [references/evolution.md](references/evolution.md).
+Do not mutate the global Skill from one project's preferences. Change the Skill kernel only through explicit review supported by cross-project evidence or a confirmed maintainer decision.

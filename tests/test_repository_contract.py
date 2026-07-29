@@ -54,27 +54,82 @@ class RepositoryContractTests(unittest.TestCase):
         )
         expected = "\n".join(case["expected"])
         self.assertIn("当前实现、目标意图和候选方案", expected)
-        self.assertIn("角色、入口、页面、动作、状态", expected)
+        self.assertIn("角色、触发情境、用户目标、完成信号", expected)
         self.assertIn("不把后端业务流水线或 API 清单", expected)
-        self.assertIn("统一领域证据报告", expected)
-        self.assertIn("UI 画像只负责取证", expected)
+        self.assertIn("不从页面、路由、组件或当前运行界面反推", expected)
 
-    def test_optional_domain_evidence_profiles_are_wired(self):
+    def test_intent_discovery_is_wired(self):
         skill = (ROOT / "skills/yuanforge/SKILL.md").read_text(encoding="utf-8")
         required = [
             "skills/yuanforge/references/domain-evidence.md",
-            "skills/yuanforge/references/ui-evidence.md",
+            "skills/yuanforge/references/intent-discovery.md",
+            "skills/yuanforge/references/capability-combinations.md",
         ]
         for path in required:
             self.assertTrue((ROOT / path).is_file(), path)
         self.assertIn("references/domain-evidence.md", skill)
-        self.assertIn("references/ui-evidence.md", skill)
+        self.assertIn("references/intent-discovery.md", skill)
+        self.assertIn("references/capability-combinations.md", skill)
+        self.assertNotIn("references/ui-evidence.md", skill)
 
-        contract = (ROOT / required[0]).read_text(encoding="utf-8")
-        self.assertIn("领域画像负责发现、分类和引用证据", contract)
-        self.assertIn("YuanForge 负责判断就绪", contract)
-        self.assertIn("项目稳定文档负责保存", contract)
-        self.assertIn("不是 YuanForge 的硬依赖", contract)
+        intent = (ROOT / required[1]).read_text(encoding="utf-8")
+        self.assertIn("用户不必一开始知道完整意图", intent)
+        self.assertIn("关键取舍经用户确认", intent)
+        self.assertIn("To confirm", intent)
+
+    def test_greenfield_intent_requires_confirmation(self):
+        cases = json.loads((ROOT / "evals/cases.json").read_text(encoding="utf-8"))
+        case = next(item for item in cases if item["id"] == "greenfield-intent-emergence")
+        expected = "\n".join(case["expected"])
+        self.assertIn("目标意图素材，而不是已有项目事实", expected)
+        self.assertIn("用户不知道完整答案", expected)
+        self.assertIn("经用户确认后才写入稳定目标文档", expected)
+
+    def test_capability_recommendations_preserve_scope(self):
+        recommendations = (
+            ROOT / "skills/yuanforge/references/capability-combinations.md"
+        ).read_text(
+            encoding="utf-8"
+        )
+        for expected in [
+            "不内置领域执行能力",
+            "推荐不等于已安装或可用",
+            "PARTIAL",
+            "仍写入项目稳定文档",
+        ]:
+            self.assertIn(expected, recommendations)
+
+        cases = json.loads((ROOT / "evals/cases.json").read_text(encoding="utf-8"))
+        case = next(
+            item for item in cases if item["id"] == "capability-recommendation-fallback"
+        )
+        expected = "\n".join(case["expected"])
+        self.assertIn("不声称已经安装", expected)
+        self.assertIn("不把 UI 运行、讲义解析或领域执行实现进 YuanForge 核心", expected)
+
+    def test_skill_scope_is_finite(self):
+        skill = (ROOT / "skills/yuanforge/SKILL.md").read_text(encoding="utf-8")
+        self.assertIn("Keep the promise finite", skill)
+        self.assertIn("does not perform domain work", skill)
+        self.assertIn("does not have, recommend a suitable Skill combination", skill)
+        self.assertLess(len(skill.splitlines()), 180)
+
+    def test_cross_repo_forward_eval_is_recorded(self):
+        result = (
+            ROOT / "evals/results/2026-07-29-cross-repo-audit.md"
+        ).read_text(encoding="utf-8")
+        for expected in [
+            "样本 A",
+            "样本 B",
+            "样本 C",
+            "真实新项目",
+            "Spreadsheets + Browser",
+        ]:
+            self.assertIn(expected, result)
+        self.assertNotRegex(result, r"`[^`\n]+@[0-9a-f]{7,40}`")
+        self.assertNotRegex(result, r"(?i)(?:[a-z]:\\|\\\\wsl|/home/)")
+        sample_rows = re.findall(r"^\| 样本 [A-Z] \|", result, flags=re.MULTILINE)
+        self.assertEqual(3, len(sample_rows))
 
     def test_install_command_copies_contents_not_container(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")

@@ -12,6 +12,7 @@
 - 机器执行规则使用 Markdown；UI 元数据使用 YAML；品牌图使用 SVG。
 - 仓库契约测试只依赖 Python 标准库，避免为轻量校验引入包管理器。
 - Git 和 Git Worktree 负责版本、隔离和集成。
+- Browser、Documents、PDF、Presentations、Spreadsheets 和外部连接器均为可选组合，不是 YuanForge 的运行依赖。
 
 ## 目录边界
 
@@ -35,3 +36,4 @@ python C:/Users/ystg_/.codex/skills/.system/skill-creator/scripts/quick_validate
 - 不为项目中不存在的系统、参与者或交付面创建空规格。
 - 不把项目特有偏好静默写回全局安装的 Skill。
 - 不用自动化测试冒充真实 Agent 前向验证。
+- 不把 UI 运行、文档解析、数据分析或外部研究实现进 YuanForge 核心；能力不足时给出组合建议并披露证据缺口。

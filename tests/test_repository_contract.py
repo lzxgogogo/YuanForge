@@ -56,6 +56,25 @@ class RepositoryContractTests(unittest.TestCase):
         self.assertIn("当前实现、目标意图和候选方案", expected)
         self.assertIn("角色、入口、页面、动作、状态", expected)
         self.assertIn("不把后端业务流水线或 API 清单", expected)
+        self.assertIn("统一领域证据报告", expected)
+        self.assertIn("UI 画像只负责取证", expected)
+
+    def test_optional_domain_evidence_profiles_are_wired(self):
+        skill = (ROOT / "skills/yuanforge/SKILL.md").read_text(encoding="utf-8")
+        required = [
+            "skills/yuanforge/references/domain-evidence.md",
+            "skills/yuanforge/references/ui-evidence.md",
+        ]
+        for path in required:
+            self.assertTrue((ROOT / path).is_file(), path)
+        self.assertIn("references/domain-evidence.md", skill)
+        self.assertIn("references/ui-evidence.md", skill)
+
+        contract = (ROOT / required[0]).read_text(encoding="utf-8")
+        self.assertIn("领域画像负责发现、分类和引用证据", contract)
+        self.assertIn("YuanForge 负责判断就绪", contract)
+        self.assertIn("项目稳定文档负责保存", contract)
+        self.assertIn("不是 YuanForge 的硬依赖", contract)
 
     def test_install_command_copies_contents_not_container(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")

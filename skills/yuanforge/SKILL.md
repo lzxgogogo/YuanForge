@@ -51,6 +51,8 @@ Treat worktree names as role defaults, not a quota. Define the applicable roles 
 
 Preserve project individuality. Infer existing conventions from repository evidence before applying defaults. When asked to learn preferences or evolve the baseline, read [references/evolution.md](references/evolution.md) completely.
 
+When generic inspection cannot reliably reconstruct a domain, read [references/domain-evidence.md](references/domain-evidence.md) and use an applicable optional evidence profile. For user-facing software whose product journey is missing, disputed, or being audited, also read [references/ui-evidence.md](references/ui-evidence.md). These profiles collect evidence; YuanForge retains readiness and canonical-document ownership.
+
 ## Match the repository language
 
 Choose the language of created or substantially rewritten project documents before writing them. Use this priority:
@@ -76,6 +78,8 @@ Record an explicit, durable language preference in the appropriate concise proje
 5. Map current evidence to every baseline role.
 6. Separate observed current behavior, accepted target behavior, proposed changes, and unresolved preferences.
 7. Identify conflicts, dirty changes, path collisions, unsupported claims, and unintended language drift.
+
+Use optional evidence profiles only for applicable gaps. YuanForge must still provide a basic baseline when a specialized tool, runtime, or profile is unavailable; disclose the reduced evidence mode and resulting limits.
 
 Do not stop because expected filenames are absent. Recover facts from the repository, then create the requested canonical structure.
 

@@ -68,6 +68,8 @@ YuanForge 不内置 UI 运行、文档解析、数据分析或外部研究能力
 
 默认会规划四类 Worktree：稳定集成、实验、文档和临时排查。角色预先定义，实体按需创建；真实名称、路径和数量以项目现状为准。
 
+Worktree 只是执行现场，分支和提交才保存候选成果。YuanForge 会检查来源、提交、稳定分支归属和新鲜验证，并给出 `CONTINUE`、`SPLIT`、`READY_FOR_REVIEW`、`PARK`、`RETIRE` 或 `BLOCKED` 判断；`READY_FOR_REVIEW` 不等于维护者授权合并。实际 Git 合并、冲突处理和 Worktree 清理仍由项目交付流程和明确授权负责，稳定分支重新验证后才会进入 `[Done]`。
+
 ## 安装
 
 ```bash

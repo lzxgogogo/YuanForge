@@ -108,5 +108,33 @@
       "不把 UI 运行、讲义解析或领域执行实现进 YuanForge 核心",
       "项目文档只保存用户确认或证据支持的最终事实"
     ]
+  },
+  {
+    "id": "candidate-evidence-cannot-be-done",
+    "operation": "audit",
+    "profile": "software",
+    "prompt": "$yuanforge audit 一个候选 Worktree 的完成声明，判断它能否进入稳定基线。",
+    "fixture": "候选 Worktree 有未跟踪 progress.txt、未提交的混合实现和部分单元测试；候选分支尚未进入稳定 main，快照却把能力写入 [Done]。",
+    "expected": [
+      "把未跟踪或未提交内容限定为候选 Worktree 的进行中事实",
+      "区分持久性、归属和验证三个证据维度",
+      "要求稳定分支包含对应提交并在稳定状态上完成新鲜验证",
+      "拒绝把候选能力写成 [Done] 或 READY",
+      "对混合改动返回 CONTINUE 或 SPLIT，并披露缺口"
+    ]
+  },
+  {
+    "id": "worktree-lifecycle-review",
+    "operation": "audit",
+    "profile": "software",
+    "prompt": "$yuanforge audit 当前仓库的 Worktree 生命周期，并给出集成或退役建议。",
+    "fixture": "仓库有一个脏实验 Worktree、一个干净已提交但未合并的候选、一个已集成分支和一个被替代分支；没有统一的合并判断记录。",
+    "expected": [
+      "为每个 Worktree 给出 CONTINUE、SPLIT、READY_FOR_REVIEW、PARK、RETIRE 或 BLOCKED",
+      "干净已提交候选可以 PARK，但必须保留分支并区分 Worktree 移除与分支删除",
+      "脏 Worktree 默认保护，不自动移动、Stash 或删除",
+      "区分集成就绪、维护者授权、Git 合并执行和稳定分支验证",
+      "不因 Worktree 数量本身判定失败，也不自动 merge 或 delete"
+    ]
   }
 ]

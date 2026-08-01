@@ -107,6 +107,32 @@ class RepositoryContractTests(unittest.TestCase):
         self.assertIn("不声称已经安装", expected)
         self.assertIn("不把 UI 运行、讲义解析或领域执行实现进 YuanForge 核心", expected)
 
+    def test_integration_readiness_cases_are_recorded(self):
+        cases = json.loads((ROOT / "evals/cases.json").read_text(encoding="utf-8"))
+        by_id = {case["id"]: case for case in cases}
+        for case_id in (
+            "candidate-evidence-cannot-be-done",
+            "worktree-lifecycle-review",
+        ):
+            self.assertIn(case_id, by_id)
+            self.assertEqual("audit", by_id[case_id]["operation"])
+            self.assertGreaterEqual(len(by_id[case_id]["expected"]), 5)
+
+    def test_integration_readiness_reference_is_wired(self):
+        skill = (ROOT / "skills/yuanforge/SKILL.md").read_text(encoding="utf-8")
+        reference_path = ROOT / "skills/yuanforge/references/integration-readiness.md"
+        self.assertTrue(reference_path.is_file())
+        self.assertIn("references/integration-readiness.md", skill)
+        reference = reference_path.read_text(encoding="utf-8")
+        for expected in [
+            "READY_FOR_REVIEW",
+            "PARK",
+            "RETIRE",
+            "BLOCKED",
+            "不自动执行 `git merge`",
+        ]:
+            self.assertIn(expected, reference)
+
     def test_skill_scope_is_finite(self):
         skill = (ROOT / "skills/yuanforge/SKILL.md").read_text(encoding="utf-8")
         self.assertIn("Keep the promise finite", skill)

@@ -1,6 +1,6 @@
 # YuanForge 当前快照
 
-状态：P1 首次自举已完成；P2 已完成核心减法重构，并对三个现有真实仓库完成独立只读评测；真实新项目意图发现仍待验证。来源证明门与 Worktree 生命周期门已在 `codex/writing` 形成候选提交，尚未进入 `main`。
+状态：P1 首次自举已完成；P2 已完成核心减法重构，并对三个现有真实仓库完成独立只读评测；真实新项目意图发现仍待验证。来源证明门与 Worktree 生命周期门已进入 `main`，并通过稳定分支验证。
 
 已完成：
 - Skill 包、README、Yuan Layer 概念文档和品牌图已发布。
@@ -19,17 +19,16 @@
 - 对三个脱敏真实样本完成独立只读审计，三者均准确返回 `PARTIAL`，没有把实现、原型或候选分支冒充目标事实。
 - 验证能力建议边界：仅样本 B 因被忽略表格和未运行 HTML 原型建议 Spreadsheets + Browser，且没有声称能力已安装或目标已确认。
 - 仓库测试、Skill 校验、UTF-8、JSON、SVG、链接和重复安装验证通过。
+- `[Done]`/`READY` 现在要求稳定分支归属和稳定状态的新鲜验证；候选 Worktree 使用 `CONTINUE`、`SPLIT`、`READY_FOR_REVIEW`、`PARK`、`RETIRE` 或 `BLOCKED` 判断。
+- Worktree 指南已明确集成就绪、维护者授权、Git 合并、稳定验证和安全退役的职责边界；不自动 merge、Stash 或删除。
 
 进行中：
-- Skill 已增加稳定分支来源、候选集成就绪和 Worktree 退役规则；等待完整验证与稳定分支集成。
-- YuanForge 自身 Worktree 指南、Agent 入口、Lessons 和评测正在同步同一职责边界。
+- 无。
 
 阻塞：
 - 无。
 
 下一步：
-- 在 `codex/writing` 完成仓库测试、Skill 校验、链接和拓扑验证；通过后由维护者决定是否集成。
-- 集成到 `main` 后重新运行稳定分支验证，再把本轮能力从候选状态晋升为已完成。
 - 在一个真实新项目中验证“素材 → 问题 → 候选方案 → 用户确认 → 稳定文档”的意图发现流程。
 - 找一个健康基线样本验证 `READY` 判定校准，不从三个 `PARTIAL` 样本推断完成能力。
 
@@ -38,9 +37,10 @@
 - YuanForge 在多种真实仓库上的 Agent 行为一致性。
 
 本轮验证：
-- `python -m unittest discover -s tests -v`：12 项通过。
+- `python -m unittest discover -s tests -v`：14 项通过。
 - `quick_validate.py skills/yuanforge`：通过。
-- Git Diff 空白错误、Markdown 相对链接、UTF-8、JSON、SVG、意图发现和能力组合契约：通过。
+- Git Diff 空白错误、Markdown 相对链接、UTF-8、JSON、SVG、意图发现、能力组合和集成就绪契约：通过。
+- `git worktree list`：实际 2 棵 Worktree，均指向当前稳定提交且工作区干净。
 - 三个真实已有仓库的独立只读审计：3 个 `PARTIAL`；详细结果见 `evals/results/2026-07-29-cross-repo-audit.md`。
 - 可提交评测记录已脱敏；含真实仓库身份和路径的原始输出仅保留在本地任务上下文。
 - 真实新项目意图发现和健康基线 `READY` 校准尚未验证。

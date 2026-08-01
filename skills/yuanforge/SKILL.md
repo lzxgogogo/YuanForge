@@ -24,6 +24,8 @@ Use YuanForge only when important artifacts, decisions, constraints, and verific
 
 Read [references/roles.md](references/roles.md) and [references/bootstrap.md](references/bootstrap.md) completely before creating or changing baseline artifacts.
 
+When a task involves multiple branches, Worktrees, candidate implementations, or completion claims, also read [references/integration-readiness.md](references/integration-readiness.md).
+
 Produce or map these information responsibilities:
 
 ```text
@@ -62,6 +64,7 @@ The user does not need to know the complete intent in advance. Help it emerge th
 4. Map evidence to the six responsibilities.
 5. Separate current facts, confirmed target intent, proposed options, and unresolved questions.
 6. Identify conflicts, dirty changes, path collisions, unsupported claims, and language drift.
+7. For each relevant Worktree, classify persistence, branch ownership, verification freshness, lifecycle state, and integration decision.
 
 Do not stop because expected filenames are absent. Recover facts from evidence and reuse existing canonical documents.
 
@@ -109,11 +112,15 @@ Verify that:
 - relative links, commands, language, and defaults are valid;
 - `AGENTS.md`, `progress.txt`, `lessons.md`, and Worktree guidance form a usable loop;
 - actual Worktrees match documented materialized topology;
-- dirty state and external unknowns are disclosed.
+- dirty state and external unknowns are disclosed;
+- stable-branch inclusion and fresh stable verification support every `[Done]` or `READY` claim;
+- candidate Worktrees receive `CONTINUE`, `SPLIT`, `READY_FOR_REVIEW`, `PARK`, `RETIRE`, or `BLOCKED` with evidence.
 
 ### 6. Hand off
 
 Report artifacts changed or reused, Worktree state, verification, unresolved questions, capability gaps, and the normal start sequence for later tasks. Use `READY`, `PARTIAL`, or `BLOCKED`. A plan or plausible draft is not completion evidence.
+
+Keep `READY_FOR_REVIEW`, maintainer authorization, Git integration, and `VERIFIED_ON_STABLE` distinct; do not automatically merge, Stash, or delete.
 
 ## Evolve without drifting
 
